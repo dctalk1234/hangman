@@ -1,0 +1,10 @@
+p {
+    display: inline-block;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+}
+
+.hide {
+    display: none;
+}
