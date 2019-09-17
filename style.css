@@ -11,3 +11,11 @@ p {
 .hide {
     display: none;
 }
+
+.strikes {
+    text-decoration: line-through;
+    color: red;
+    
+    text-align: center;
+    font-size: 30px;
+}

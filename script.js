@@ -26,6 +26,7 @@ function createBoard(e) {
     submitLetterGuessButton.addEventListener('click', checkGuess);
     board.appendChild(submitLetterGuessButton);
     checkGuess();
+    checkWin();
 }
 
 function checkGuess() {
@@ -34,18 +35,34 @@ function checkGuess() {
     
     
     let letters = document.querySelectorAll('.letter');
+    let correctGuess = false;
     for(let i = 0; i < word.length; i++)
     {
         if(guess.toLowerCase() === word[i].toLowerCase())
         {
+            correctGuess = true;
             letters[i].innerText = guess;
             letters[i].style.borderBottom = 'none';
           
         }
     }
+
+    if(!correctGuess)
+    {
+        wrongGuess(guess);
+    }
 }
 
+function wrongGuess(letter) {
+    let strikes = document.querySelector('.strikes');
+    let newStrike = document.createElement('div');
+    newStrike.innerText = guess;
+    strikes.appendChild(newStrike);
+}
 
+function checkWin() {
+    
+}
 
 
 
