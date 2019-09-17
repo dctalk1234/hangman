@@ -5,7 +5,7 @@ let word;
 function createBoard(e) {
     word = document.querySelector('.input').value;
     word = word.split('');
-
+    clearBoard();
     for(let i = 0; i < word.length; i++)
     {
         let newLetter = document.createElement('p');
@@ -45,7 +45,12 @@ function checkGuess() {
     }
 }
 
-
+function clearBoard() {
+    while(board.firstChild)
+    {
+        board.removeChild(board.firstChild);
+    }
+}
 
 
 
