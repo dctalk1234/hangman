@@ -1,8 +1,11 @@
 
 let submitWordButton = document.querySelector('.submitWordButton');
 let board = document.querySelector('.board');
+let strikes = document.querySelector('.strikes');
 
 let word;
+let guess;
+let allowedGuesses = 0;
 function createBoard(e) {
     word = document.querySelector('.input').value;
     word = word.split('');
@@ -34,38 +37,53 @@ function createBoard(e) {
 function checkGuess() {
    
     guess = document.querySelector('.userGuess').value || " ";
-    
-    
     let letters = document.querySelectorAll('.letter');
     let correctGuess = false;
-    for(let i = 0; i < word.length; i++)
+
+    if(guess.length > 1)
     {
-        if(guess.toLowerCase() === word[i].toLowerCase())
+        correctGuess = checkWord(correctGuess);
+    }
+    else
+    {
+        for(let i = 0; i < word.length; i++)
         {
-            correctGuess = true;
-            letters[i].innerText = guess;
-            letters[i].style.borderBottom = 'none';
-          
+            if(guess.toLowerCase() === word[i].toLowerCase())
+            {
+                correctGuess = true;
+                letters[i].innerText = guess;
+                letters[i].style.borderBottom = 'none';
+            }
         }
     }
 
-        if(!correctGuess)
+    if(!correctGuess)
     {
-        wrongGuess(guess);
+        wrongGuess();
     }
 
     let win = checkWin();
     if(win)
     {
-        alert('you win');
+        openModal();
     }
 }
 
-function wrongGuess(letter) {
+function wrongGuess() {
     let strikes = document.querySelector('.strikes');
     let newStrike = document.createElement('div');
     newStrike.innerText = guess;
     strikes.appendChild(newStrike);
+}
+
+function correctWordGuess() {
+    let letters = document.querySelectorAll('.letter');
+
+    for(let i = 0; i < guess.length; i++)
+    {
+        letters[i].innerText = guess[i];
+        letters[i].style.borderBottom = 'none';
+    }
 }
 
 function checkWin() {
@@ -87,9 +105,52 @@ function clearBoard() {
     {
         board.removeChild(board.firstChild);
     }
+
+    while(strikes.firstChild)
+    {
+        strikes.removeChild(strikes.firstChild);
+    }
 }
 
+function checkWord(correctGuess) {
+    if(guess.length === word.length)    //save on computations if guess is not even same number of letters as word
+    {
+        let correct = 0;
+        guess = guess.split('');
+        for(let i = 0; i < guess.length; i++)
+        {
+            if(guess[i] === word[i])
+            {
+                correct++;
+            }
+        }
 
+        if(correct === word.length)
+        {
+            correctGuess = true;
+            correctWordGuess();
+        }
+    }
+    
+    return correctGuess;
+    
+}
+
+/**********code for modal box if win*************** */
+const modal = document.querySelector('#modal');
+
+const close = document.querySelector('#close');
+
+
+function openModal() {
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+close.addEventListener('click', closeModal);
 
 
 
