@@ -28,7 +28,7 @@ function createBoard(e) {
     board.appendChild(submitLetterGuessButton);
     checkGuess();
 
-    checkWin();
+    
 }
 
 function checkGuess() {
@@ -53,6 +53,12 @@ function checkGuess() {
     {
         wrongGuess(guess);
     }
+
+    let win = checkWin();
+    if(win)
+    {
+        alert('you win');
+    }
 }
 
 function wrongGuess(letter) {
@@ -63,7 +69,17 @@ function wrongGuess(letter) {
 }
 
 function checkWin() {
+    let letters = document.querySelectorAll('.letter');
     
+    for(let i = 0; i < letters.length; i++)
+    {
+        if(letters[i].style.borderBottom != 'none')
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function clearBoard() {
