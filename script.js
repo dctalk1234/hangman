@@ -110,7 +110,12 @@ function clearBoard() {
 
 	while (strikes.firstChild) {
 		strikes.removeChild(strikes.firstChild);
-	}
+    }
+    
+    while (userGuessesArr.length)
+    {
+        userGuessesArr.pop();
+    }
 }
 
 function checkWord(correctGuess) {
