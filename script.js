@@ -7,14 +7,15 @@ let guess;
 let maxWrongGuesses = 0;
 let userWrongGuesses = 0;
 let userGuessesArr = [];
+let errorMessage;
 function createBoard(e) {
-    e.preventDefault();
+	e.preventDefault();
 
 	word = document.querySelector(".input").value;
-    word = word.split("");
-    
-    clearBoard();
-    
+	word = word.split("");
+
+	clearBoard();
+
 	maxWrongGuesses = Math.floor(word.length * 1.5);
 	for (let i = 0; i < word.length; i++) {
 		let newLetter = document.createElement("p");
@@ -34,15 +35,22 @@ function createBoard(e) {
 	submitLetterGuessButton.value = "submit";
 	submitLetterGuessButton.addEventListener("click", checkGuess);
 	board.appendChild(submitLetterGuessButton);
+
+    errorMessage = document.createElement("p");
+    errorMessage.innerText = 'error: already guessed';
+    errorMessage.classList.add("hide", "error");
+    board.appendChild(errorMessage);
+    
 	checkGuess();
 	userWrongGuesses = 0;
 }
 
 function checkGuess(e) {
-    e.preventDefault();
+	e.preventDefault();
 	guess = document.querySelector(".userGuess").value || " ";
 	if (!userGuessesArr.includes(guess)) {
         userGuessesArr.push(guess);
+        errorMessage.classList.add('hide');
 		let letters = document.querySelectorAll(".letter");
 		let correctGuess = false;
 
@@ -73,6 +81,8 @@ function checkGuess(e) {
 		if (userWrongGuesses > maxWrongGuesses) {
 			alert("you lose");
 		}
+	} else {
+		errorMessage.classList.remove('hide');
 	}
 }
 
@@ -115,12 +125,11 @@ function clearBoard() {
 
 	while (strikes.firstChild) {
 		strikes.removeChild(strikes.firstChild);
-    }
+	}
 
-    while (userGuessesArr.length)
-    {
-        userGuessesArr.pop();
-    }
+	while (userGuessesArr.length) {
+		userGuessesArr.pop();
+	}
 }
 
 function checkWord(correctGuess) {

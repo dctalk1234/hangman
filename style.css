@@ -8,6 +8,13 @@ p {
   font-size: 40px;
 }
 
+.error {
+  border-bottom: none;
+  padding: 10px;
+  color: red;
+  font-size: 30px;
+}
+
 .hide {
   display: none;
 }
