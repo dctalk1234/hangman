@@ -16,7 +16,7 @@ function createBoard(e) {
 
 	clearBoard();
 
-	maxWrongGuesses = Math.floor(word.length * 1.5);
+	maxWrongGuesses = generateMaxGuess();
 	for (let i = 0; i < word.length; i++) {
 		let newLetter = document.createElement("p");
 		newLetter.classList.add("letter");
@@ -46,7 +46,9 @@ function createBoard(e) {
 }
 
 function checkGuess(e) {
-	e.preventDefault();
+	if(e){
+        e.preventDefault();
+    }
 	guess = document.querySelector(".userGuess").value || " ";
 	if (!userGuessesArr.includes(guess)) {
         userGuessesArr.push(guess);
@@ -152,6 +154,16 @@ function checkWord(correctGuess) {
 	return correctGuess;
 }
 
+function generateMaxGuess() {
+    if(Math.floor(word.length * 1.5) > 10)
+    {
+        return 13;
+    }
+    else
+    {
+        return Math.floor(word.length * 1.5);
+    }
+}
 /**********code for modal box if win*************** */
 const modal = document.querySelector("#modal");
 
