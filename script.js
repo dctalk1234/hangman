@@ -8,9 +8,13 @@ let maxWrongGuesses = 0;
 let userWrongGuesses = 0;
 let userGuessesArr = [];
 function createBoard(e) {
+    e.preventDefault();
+
 	word = document.querySelector(".input").value;
-	word = word.split("");
-	clearBoard();
+    word = word.split("");
+    
+    clearBoard();
+    
 	maxWrongGuesses = Math.floor(word.length * 1.5);
 	for (let i = 0; i < word.length; i++) {
 		let newLetter = document.createElement("p");
@@ -34,7 +38,8 @@ function createBoard(e) {
 	userWrongGuesses = 0;
 }
 
-function checkGuess() {
+function checkGuess(e) {
+    e.preventDefault();
 	guess = document.querySelector(".userGuess").value || " ";
 	if (!userGuessesArr.includes(guess)) {
         userGuessesArr.push(guess);
@@ -111,7 +116,7 @@ function clearBoard() {
 	while (strikes.firstChild) {
 		strikes.removeChild(strikes.firstChild);
     }
-    
+
     while (userGuessesArr.length)
     {
         userGuessesArr.pop();
