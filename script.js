@@ -143,7 +143,7 @@ function checkWin() {
 	let letters = document.querySelectorAll(".letter");
 
 	for (let i = 0; i < letters.length; i++) {
-		if (letters[i].style.borderBottom != "none") {
+		if (letters[i].style.borderBottom != "none") {     // check each letter and see if the border style is still present if one is then return false
 			return false;
 		}
 	}
