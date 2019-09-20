@@ -219,7 +219,7 @@ const modal = document.querySelector("#modal");
 const close = document.querySelector("#close");
 
 function openModal(message) {
-    modal.firstChild().innerText = message;
+    modal.firstElementChild.firstElementChild.innerText = message;
 	modal.style.display = "block";
 }
 
