@@ -10,7 +10,7 @@ The most up to date working version is hosted here https://dctalk1234.github.io/
 ## Features
 * User can enter any word or phrase to be guessed
 * All right and wrong guesses and the results are processed by the application
-* Number of wrong guesses is calculated automatically with the max being 13 depending on word size
+* Number of wrong guesses before losing is calculated automatically with the max being 13 depending on word size
 * Application will not allow user to make the same guess multiple times
 
 ## Technologies Used
