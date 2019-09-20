@@ -13,10 +13,16 @@ The most up to date working version is hosted here https://dctalk1234.github.io/
 * Number of wrong guesses before losing is calculated automatically with the max being 13 depending on word size
 * Application will not allow user to make the same guess multiple times
 
+## Features Still Under Construction
+* Display remaining wrong guesses available
+* Full instruction modal to display at start
+* Single player mode against computer using dictionay api to find random words
+
 ## Technologies Used
 * Javascript
 * html
 * CSS
 * Sass
+
 
 
