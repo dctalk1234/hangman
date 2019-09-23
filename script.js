@@ -149,8 +149,8 @@ function checkWin() {
 	let letters = document.querySelectorAll(".letter");
 
 	for (let i = 0; i < letters.length; i++) {
+					// check each letter and see if the border style is still present if one is then return false
 		if (letters[i].style.borderBottom != "none") {
-			// check each letter and see if the border style is still present if one is then return false
 			return false;
 		}
 	}
@@ -168,15 +168,15 @@ function clearBoard() {
 	maxWrongGuesses = 0;
 
 	while (board.firstChild) {
-		board.removeChild(board.firstChild);
+		board.removeChild(board.firstChild);   //remove board elements
 	}
 
 	while (strikes.firstChild) {
-		strikes.removeChild(strikes.firstChild);
+		strikes.removeChild(strikes.firstChild);   //remove strikes elements (missed guesses)
 	}
 
 	while (userGuessesArr.length) {
-		userGuessesArr.pop();
+		userGuessesArr.pop();                 //reset array of user guesses
 	}
 }
 
