@@ -27,6 +27,7 @@ function createBoard(e) {
 	maxWrongGuesses = generateMaxGuess(); // use function to determine what the maximum number of wrong guesses before losing
 
 	// this for loop creates the blanks for each letter in the word to be guessed
+	// I would've made this a forEach instead. 
 	for (let i = 0; i < word.length; i++) {
 		let newLetter = document.createElement("p"); //create new p element
 		newLetter.classList.add("letter"); //add letter class to add correct css to a blank space
@@ -65,6 +66,7 @@ function createBoard(e) {
  */
 function checkGuess(e) {
 	// if function triggered by event listener
+	// I don't think you need the if statement just let it check everytime
 	if (e) {
 		e.preventDefault(); //prevent default behavior
 	}
@@ -83,6 +85,7 @@ function checkGuess(e) {
 			correctGuess = checkWord(correctGuess); // use checkWord function to find out whether their guess was correct
 		} else {
 			// iterate through the word
+			// this could be a forEach
 			for (let i = 0; i < word.length; i++) {
 				if (guess.toLowerCase() === word[i].toLowerCase()) {
 					//if the letter is at a index in the word
@@ -147,7 +150,7 @@ function correctWordGuess() {
  */
 function checkWin() {
 	let letters = document.querySelectorAll(".letter");
-
+	// forEach
 	for (let i = 0; i < letters.length; i++) {
 					// check each letter and see if the border style is still present if one is then return false
 		if (letters[i].style.borderBottom != "none") {
@@ -190,7 +193,7 @@ function checkWord(correctGuess) {
 	if (guess.length === word.length) {
 		let correct = 0; //variable to keep track of how many letters in guess are correct
 		guess = guess.split(""); // split guess string into array of letters for checking
-		for (let i = 0; i < guess.length; i++) {
+		for (let i = 0; i < guess.length; i++) { // this can also be a one line forEach with a ternary 
 			if (guess[i] === word[i]) {
 				//if letter is the same as word in same position
 				correct++;
