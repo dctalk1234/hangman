@@ -22,7 +22,7 @@ The most up to date working version is hosted here https://dctalk1234.github.io/
 * Javascript
 * html
 * CSS
-* Sass
+* Scss
 
 
 
